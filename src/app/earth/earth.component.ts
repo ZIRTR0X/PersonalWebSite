@@ -3,37 +3,59 @@ import * as THREE from 'three';
 import CameraControls from 'camera-controls';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { ThemeService } from '../services/theme.service';
-CameraControls.install( { THREE: THREE } );
+CameraControls.install({ THREE: THREE });
 globalThis.THREE = THREE;
 
 @Component({
   selector: 'app-earth',
   templateUrl: './earth.component.html',
-  styleUrls: ['./earth.component.css']
+  styleUrls: ['./earth.component.css'],
 })
 export class EarthComponent implements OnInit {
+  // Region Properties
+
+  public threeRenderer: THREE.WebGLRenderer = new THREE.WebGLRenderer();
+
   private themeService = new ThemeService();
-  public renderer: THREE.WebGLRenderer = new THREE.WebGLRenderer();
+  // Dimensions of the rendering area
+  private renderingAreaWidth: number = 500;
+  private renderingAreaHeight: number = 500;
+  private clock: THREE.Clock = new THREE.Clock();
+  private scene: THREE.Scene = new THREE.Scene();
+  private directionalLight?: THREE.DirectionalLight;
+  private camera?: THREE.PerspectiveCamera;
+  private cameraControls?: CameraControls;
+
+  // endregion
+
+  // Region Methods
 
   @ViewChild('canvas', { static: true }) canvas!: ElementRef<HTMLCanvasElement>;
   ngOnInit(): void {
-    let width = 500;
-    let height = 500;
-    const clock = new THREE.Clock();
-    const scene = new THREE.Scene();
+    this.setWindowSize();
 
-    setWindowSize();
-
-    const camera = new THREE.PerspectiveCamera( 28, width / height, 0.01, 100 );
-    let directionalLight: THREE.DirectionalLight | null = null;
+    this.camera = new THREE.PerspectiveCamera(
+      28,
+      this.renderingAreaWidth / this.renderingAreaHeight,
+      0.01,
+      100
+    );
 
     // @ts-ignore
     globalThis.camera = camera;
-    camera.position.set( 0, 0, 5 );
-    this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas.nativeElement });
-    this.renderer.setSize( width, height );
+    this.camera.position.set(0, 0, 5);
+    this.threeRenderer = new THREE.WebGLRenderer({
+      canvas: this.canvas.nativeElement,
+    });
+    this.threeRenderer.setSize(
+      this.renderingAreaWidth,
+      this.renderingAreaHeight
+    );
 
-    const cameraControls = new CameraControls( camera, this.renderer.domElement );
+    const cameraControls = new CameraControls(
+      this.camera,
+      this.threeRenderer.domElement
+    );
     cameraControls.mouseButtons.left = CameraControls.ACTION.ROTATE;
     cameraControls.mouseButtons.right = CameraControls.ACTION.NONE;
     cameraControls.mouseButtons.wheel = CameraControls.ACTION.NONE;
@@ -49,25 +71,29 @@ export class EarthComponent implements OnInit {
     const loader = new GLTFLoader();
     loader.load(
       'assets/gltf/low_poly_earth.gltf',
-      ( gltf ) => {
+      (gltf) => {
         const model = gltf.scene;
 
         const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-        scene.add(ambientLight);
+        this.scene.add(ambientLight);
 
-        directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-        directionalLight.position.copy(camera.position);
-        scene.add(directionalLight);
+        this.directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+        this.directionalLight.position.copy(this.camera!.position);
+        this.scene.add(this.directionalLight);
 
-        scene.add( model );
-        this.renderer.setClearColor(new THREE.Color(this.themeService.isDarkTheme() ? "#181a1b" : "#ffffff"));
-        this.renderer.render( scene, camera );
+        this.scene.add(model);
+        this.threeRenderer.setClearColor(
+          new THREE.Color(
+            this.themeService.isDarkTheme() ? '#181a1b' : '#ffffff'
+          )
+        );
+        this.threeRenderer.render(this.scene, this.camera!);
       },
-      ( xhr ) => {
-        console.log( 'Earth ' +( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+      (xhr) => {
+        console.log('Earth ' + (xhr.loaded / xhr.total) * 100 + '% loaded');
       },
-      ( error ) => {
-        console.error( 'An error happened', error );
+      (error) => {
+        console.error('An error happened', error);
       }
     );
 
@@ -75,81 +101,90 @@ export class EarthComponent implements OnInit {
     let disableAutoRotate = false;
 
     const onRest = () => {
-      cameraControls.removeEventListener( 'rest', onRest );
+      cameraControls.removeEventListener('rest', onRest);
       userDragging = false;
       disableAutoRotate = false;
-    }
+    };
 
-    cameraControls.addEventListener( 'controlstart', () => {
-      cameraControls.removeEventListener( 'rest', onRest );
+    cameraControls.addEventListener('controlstart', () => {
+      cameraControls.removeEventListener('rest', onRest);
       userDragging = true;
       disableAutoRotate = true;
-    } );
+    });
 
-    cameraControls.addEventListener( 'controlend', () => {
-      if ( cameraControls.active )
-        cameraControls.addEventListener( 'rest', onRest );
-      else
-        onRest();
-    } );
+    cameraControls.addEventListener('controlend', () => {
+      if (cameraControls.active)
+        cameraControls.addEventListener('rest', onRest);
+      else onRest();
+    });
 
-    cameraControls.addEventListener( 'transitionstart', () => {
-      if ( userDragging ) return;
+    cameraControls.addEventListener('transitionstart', () => {
+      if (userDragging) return;
       disableAutoRotate = true;
-      cameraControls.addEventListener( 'rest', onRest );
-    } );
+      cameraControls.addEventListener('rest', onRest);
+    });
 
-    const renderer = this.renderer;
-
-    ( function anim () {
-      const delta = clock.getDelta();
-      const updated = cameraControls.update( delta );
-      updateLightPosition(camera);
-      if ( !disableAutoRotate )
-        cameraControls.azimuthAngle += 20 * delta * THREE.MathUtils.DEG2RAD;
-
-      if (updated)
-        renderer.render( scene, camera );
-
-      requestAnimationFrame( anim );
-    } )();
-
-    function updateLightPosition(camera: THREE.PerspectiveCamera) {
-      if (directionalLight !== null) {
-        directionalLight.position.copy(camera.position);
-      }
-    }
     const onWindowResize = () => {
-      setWindowSize();
-      this.renderer.setSize( width, height );
-      camera.aspect = width / height;
-    }
+      this.setWindowSize();
+      this.threeRenderer.setSize(
+        this.renderingAreaWidth,
+        this.renderingAreaHeight
+      );
+      this.camera!.aspect = this.renderingAreaWidth / this.renderingAreaHeight;
+    };
 
-    window.addEventListener( 'resize', onWindowResize, false );
+    window.addEventListener('resize', onWindowResize, false);
 
-    function setWindowSize() {
-      if(window.innerWidth > 1270){
-        width = height = 500;
-      } else if(window.innerWidth > 1000){
-        width = height = 450;
-      } else if(window.innerWidth > 700){
-        width = height = 400;
-      } else if(window.innerWidth > 460){
-        width = height = 350;
-      } else if(window.innerWidth > 320){
-        width = height = 300;
-      } else {
-        width = height = 250;
-      }
-    }
-
-    const themeButton = document.querySelectorAll('.toggle-checkbox') as NodeListOf<HTMLInputElement>;
+    const themeButton = document.querySelectorAll(
+      '.toggle-checkbox'
+    ) as NodeListOf<HTMLInputElement>;
 
     themeButton.forEach((button) => {
       button.addEventListener('change', () => {
-        this.renderer.setClearColor(new THREE.Color(this.themeService.isDarkTheme() ? "#181a1b" : "#ffffff"));
-        this.renderer.render( scene, camera );
+        this.threeRenderer.setClearColor(
+          new THREE.Color(
+            this.themeService.isDarkTheme() ? '#181a1b' : '#ffffff'
+          )
+        );
+        this.threeRenderer.render(this.scene, this.camera!);
       });
     });
   }
+
+  private updateLightPosition(camera: THREE.PerspectiveCamera): void {
+    if (this.directionalLight !== null) {
+      this.directionalLight?.position.copy(camera.position);
+    }
+  }
+
+  private anim(): void {
+    const renderer = this.threeRenderer;
+    const delta = this.clock.getDelta();
+    const updated = cameraControls.update(delta);
+    this.updateLightPosition(this.camera);
+    if (!disableAutoRotate)
+      cameraControls.azimuthAngle += 20 * delta * THREE.MathUtils.DEG2RAD;
+
+    if (updated) renderer.render(this.scene, this.camera!);
+
+    requestAnimationFrame(this.anim);
+  }
+
+  private setWindowSize(): void {
+    if (window.innerWidth > 1270) {
+      this.renderingAreaWidth = this.renderingAreaHeight = 500;
+    } else if (window.innerWidth > 1000) {
+      this.renderingAreaWidth = this.renderingAreaHeight = 450;
+    } else if (window.innerWidth > 700) {
+      this.renderingAreaWidth = this.renderingAreaHeight = 400;
+    } else if (window.innerWidth > 460) {
+      this.renderingAreaWidth = this.renderingAreaHeight = 350;
+    } else if (window.innerWidth > 320) {
+      this.renderingAreaWidth = this.renderingAreaHeight = 300;
+    } else {
+      this.renderingAreaWidth = this.renderingAreaHeight = 250;
+    }
+  }
+
+  // endregion
 }
