@@ -8,16 +8,15 @@ import {
   NgxGoogleAnalyticsModule,
   NgxGoogleAnalyticsRouterModule,
 } from 'ngx-google-analytics';
-import { NavbarModule } from './navbar/navbar.module';
-import { MobileNavbarModule } from './mobile-navbar/mobile-navbar.module';
 import { FooterModule } from './footer/footer.module';
 import { WorkModule } from './work/work.module';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { HomeModule } from './home/home.module';
 import { ContactModule } from './contact/contact.module';
 import { NavbarComponent } from './navbar/navbar.component';
-import { DarkModeToggleButtonModule } from './dark-mode-toggle-button/dark-mode-toggle-button.module';
 import { MobileNavbarComponent } from './mobile-navbar/mobile-navbar.component';
+import { DarkModeToggleButtonModule } from './dark-mode-toggle-button/dark-mode-toggle-button.module';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [AppComponent, NavbarComponent, MobileNavbarComponent],
@@ -29,14 +28,13 @@ import { MobileNavbarComponent } from './mobile-navbar/mobile-navbar.component';
     HttpClientModule,
     NgxGoogleAnalyticsModule.forRoot('G-XCFJ5ZRZMV'),
     NgxGoogleAnalyticsRouterModule,
-    // NavbarModule,
-    // MobileNavbarModule,
     FooterModule,
     WorkModule,
     AngularSvgIconModule.forRoot(),
     HomeModule,
     ContactModule,
     DarkModeToggleButtonModule,
+    MatSlideToggleModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

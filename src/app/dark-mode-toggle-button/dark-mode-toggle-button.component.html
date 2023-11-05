@@ -1,5 +1,10 @@
-<mat-icon fontIcon="light_mode"></mat-icon>
-<div>
+<div class="flex">
+  <mat-icon
+    svgIcon="light-mode"
+    aria-hidden="false"
+    aria-label="light-mode.svg"
+    class="mr-2"
+  ></mat-icon>
   <div
     class="relative inline-block w-10 align-middle select-none transition duration-200 ease-in"
   >
@@ -8,12 +13,17 @@
       type="checkbox"
       name="toggle"
       id="toggle"
-      class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-black border-4 appearance-none cursor-pointer"
+      class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-mainPurple border-4 appearance-none cursor-pointer"
     />
     <label
       for="toggle"
-      class="toggle-label block overflow-hidden h-6 rounded-full bg-dark cursor-pointer"
+      class="toggle-label block overflow-hidden h-6 rounded-full bg-mainPurple cursor-pointer"
     ></label>
   </div>
+  <mat-icon
+    svgIcon="dark-mode"
+    aria-hidden="false"
+    aria-label="dark-mode.svg"
+    class="ml-2"
+  ></mat-icon>
 </div>
-<mat-icon fontIcon="dark_mode"></mat-icon>
