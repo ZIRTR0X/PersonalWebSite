@@ -1,84 +1,8 @@
-<header>
-  <nav class="bg-white dark:bg-dark text-dark dark:text-white">
-    <div class="flex justify-between items-center">
-      <p class="menu-title phoneXS:text-base phone:text-h2 tablet:text-h1"><a href="">JULIEN THÊME</a></p>
-      <div class="menu phone:hidden tablet:inline">
-        <ol>
-          <li class="hover:text-white select-none"><a routerLink="/home" class="is-active">Home</a></li>
-          <li class="hover:text-white select-none"><a routerLink="/work">Work</a></li>
-          <li class="hover:text-white select-none"><a routerLink="/contact">Contact</a></li>
-          <div>
-            <div class="relative inline-block w-10 align-middle select-none transition duration-200 ease-in">
-              <input (click)="clickToggleSwicth($event)" type="checkbox" name="toggle" id="toggle" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-black border-4 appearance-none cursor-pointer"/>
-              <label for="toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-dark cursor-pointer"></label>
-            </div>
-          </div>
-        </ol>
-      </div>
-      <button (click)="clickHamburger()" class="hamburger phone:inline tablet:hidden">
-        <span class="bg-dark dark:bg-white"></span>
-        <span class="bg-dark dark:bg-white"></span>
-        <span class="bg-dark dark:bg-white"></span>
-      </button>
-    </div>
-  </nav>
-</header>
+<app-navbar></app-navbar>
 <main>
   <div class="maindiv">
     <router-outlet></router-outlet>
   </div>
-  <div class="burger-menu flex flex-col justify-center text-h1">
-    <div class="my-6">
-      <a routerLink="/home" class="hover:text-mainPurple is-active">
-        <p class="flex flex-col justify-center items-center select-none">Home</p>
-      </a>
-    </div>
-    <div class="my-6">
-      <a routerLink="/work" class="hover:text-mainPurple">
-        <p class="flex flex-col justify-center items-center select-none">Work</p>
-      </a>
-    </div>
-    <div class="my-6">
-      <a href="/contact" class="hover:text-mainPurple">
-        <p class="flex flex-col justify-center items-center select-none">Contact</p>
-      </a>
-    </div>
-    <div class="flex flex-col justify-center items-center">
-      <div>
-        <div class="relative inline-block w-10 align-middle select-none transition duration-200 ease-in ">
-          <input (click)="clickToggleSwicth($event)" type="checkbox" name="toggle" id="toggle" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-black border-4 appearance-none cursor-pointer"/>
-          <label for="toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-dark cursor-pointer"></label>
-        </div>
-      </div>
-    </div>
-  </div>
+  <app-mobile-navbar></app-mobile-navbar>
 </main>
-<footer>
-  <div class="mx-auto w-full container p-4 sm:p-6">
-    <hr class="my-6 border-mainPurple sm:mx-auto lg:my-8" />
-    <div class="flex items-center justify-between">
-      <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400 hidden phoneL:block">
-        © 2023 Julien THÊME
-      </span>
-      <div>
-        <span class="text-sm text-gray-500 text-center dark:text-gray-400">
-          Made with 💜
-        </span>
-        <span class="text-sm text-gray-500 text-center dark:text-gray-400 phoneL:hidden">
-          by Julien THÊME 
-        </span>
-      </div>
-      
-      <div class="flex mt-4 space-x-6 items-center w-auto mt-0">
-        <a href="https://github.com/ZIRTR0X" class="text-mainPurple" target="_blank">
-          <svg-icon src="assets/img/github.svg" [svgStyle]="{ 'width.rem': 2, 'height.rem': 2, 'fill':'rgb(104, 43, 215)' }"></svg-icon>
-        </a>
-        <a href="https://www.linkedin.com/in/julien-theme/" class="text-mainPurple" target="_blank">
-          <svg-icon src="assets/img/linkedin.svg" [svgStyle]="{ 'width.rem': 2, 'height.rem': 2, 'fill':'rgb(104, 43, 215)' }"></svg-icon>
-        </a>
-      </div>
-    </div>
-  </div>
-</footer>
-
-
+<app-footer></app-footer>

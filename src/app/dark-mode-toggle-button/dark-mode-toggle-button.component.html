@@ -1,0 +1,19 @@
+<mat-icon fontIcon="light_mode"></mat-icon>
+<div>
+  <div
+    class="relative inline-block w-10 align-middle select-none transition duration-200 ease-in"
+  >
+    <input
+      (click)="clickToggleSwicth($event)"
+      type="checkbox"
+      name="toggle"
+      id="toggle"
+      class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-black border-4 appearance-none cursor-pointer"
+    />
+    <label
+      for="toggle"
+      class="toggle-label block overflow-hidden h-6 rounded-full bg-dark cursor-pointer"
+    ></label>
+  </div>
+</div>
+<mat-icon fontIcon="dark_mode"></mat-icon>
