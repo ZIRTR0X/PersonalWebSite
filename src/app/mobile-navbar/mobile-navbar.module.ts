@@ -4,8 +4,8 @@ import { DarkModeToggleButtonModule } from '../dark-mode-toggle-button/dark-mode
 import { MobileNavbarComponent } from './mobile-navbar.component';
 
 @NgModule({
-  declarations: [MobileNavbarComponent],
+  declarations: [],
   imports: [CommonModule, DarkModeToggleButtonModule],
-  exports: [MobileNavbarComponent],
+  exports: [],
 })
 export class MobileNavbarModule {}

@@ -3,9 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterLink, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { HomeComponent } from './home/home.component';
-import { ContactComponent } from './contact/contact.component';
-import { EarthComponent } from './earth/earth.component';
 import { HttpClientModule } from '@angular/common/http';
 import {
   NgxGoogleAnalyticsModule,
@@ -16,9 +13,14 @@ import { MobileNavbarModule } from './mobile-navbar/mobile-navbar.module';
 import { FooterModule } from './footer/footer.module';
 import { WorkModule } from './work/work.module';
 import { AngularSvgIconModule } from 'angular-svg-icon';
+import { HomeModule } from './home/home.module';
+import { ContactModule } from './contact/contact.module';
+import { NavbarComponent } from './navbar/navbar.component';
+import { DarkModeToggleButtonModule } from './dark-mode-toggle-button/dark-mode-toggle-button.module';
+import { MobileNavbarComponent } from './mobile-navbar/mobile-navbar.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, ContactComponent, EarthComponent],
+  declarations: [AppComponent, NavbarComponent, MobileNavbarComponent],
   imports: [
     BrowserModule,
     RouterModule,
@@ -27,11 +29,14 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
     HttpClientModule,
     NgxGoogleAnalyticsModule.forRoot('G-XCFJ5ZRZMV'),
     NgxGoogleAnalyticsRouterModule,
-    NavbarModule,
-    MobileNavbarModule,
+    // NavbarModule,
+    // MobileNavbarModule,
     FooterModule,
     WorkModule,
     AngularSvgIconModule.forRoot(),
+    HomeModule,
+    ContactModule,
+    DarkModeToggleButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
