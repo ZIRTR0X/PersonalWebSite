@@ -81,7 +81,7 @@ nav {
 .menu li a {
   margin-right: 60px;
   border-radius: 99px;
-  padding: 8px 16px;
+  padding: 8px 8px;
   content: counter(li);
 }
 
