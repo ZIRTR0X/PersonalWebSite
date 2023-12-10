@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
-
-export interface Experience {
-  languages: string[];
-}
+import { Experience } from '../models/Experience';
 
 @Component({
   selector: 'app-about',
@@ -10,5 +7,14 @@ export interface Experience {
   styleUrls: ['./about.component.css'],
 })
 export class AboutComponent {
-  public experiences: Experience = { languages: ['C#', 'Java', 'JavaScript'] };
+  public experiences: Experience[] = [
+    new Experience(
+      ['C#', 'ASP.NET', 'SQL'],
+      2017,
+      2018,
+      'Calaosoft',
+      'Front-End Developer',
+      'Developed a web application for a client using ASP.NET MVC and SQL Server.'
+    ),
+  ];
 }
