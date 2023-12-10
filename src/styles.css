@@ -743,10 +743,6 @@ video {
   width: 100%;
 }
 
-.w-auto {
-  width: auto;
-}
-
 .w-80 {
   width: 20rem;
 }
@@ -761,6 +757,10 @@ video {
 
 .w-24 {
   width: 6rem;
+}
+
+.w-44 {
+  width: 11rem;
 }
 
 .max-w-\[50rem\] {
