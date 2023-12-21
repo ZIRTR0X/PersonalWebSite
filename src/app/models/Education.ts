@@ -1,24 +1,24 @@
-export class Experience {
-  public readonly languages: string[];
+export class Education {
+  public readonly languages?: string[];
   public readonly startDate: string;
   public readonly endDate: string;
-  public readonly company: string;
-  public readonly position: string;
+  public readonly institution: string;
+  public readonly studyType: string;
   public readonly description: string;
 
   constructor(
-    languages: string[],
     startDate: string,
     endDate: string,
-    company: string,
-    position: string,
-    description: string
+    institution: string,
+    studyType: string,
+    description: string,
+    languages?: string[]
   ) {
     this.languages = languages;
     this.startDate = startDate;
     this.endDate = endDate;
-    this.company = company;
-    this.position = position;
+    this.institution = institution;
+    this.studyType = studyType;
     this.description = description;
   }
 }

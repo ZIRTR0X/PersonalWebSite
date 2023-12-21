@@ -1,4 +1,4 @@
-import {Languages} from "../enums/Languages";
+import { Languages } from '../enums/ELanguage';
 
 export class Project {
   private _id: number;
@@ -8,7 +8,14 @@ export class Project {
   private _githubLink?: string;
   private _websiteLink?: string;
 
-  constructor(id: number, title: string, description: string, languages: Languages[], githubLink?: string, websiteLink?: string) {
+  constructor(
+    id: number,
+    title: string,
+    description: string,
+    languages: Languages[],
+    githubLink?: string,
+    websiteLink?: string
+  ) {
     this._id = id;
     this._title = title;
     this._description = description;
