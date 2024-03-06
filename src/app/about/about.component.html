@@ -2,12 +2,12 @@
 <div class="flex justify-center items-center flex-col">
   <div
     *ngFor="let experience of experiences"
-    class="work-card p-6 rounded-lg shadow-md flex items-start w-140 dark:bg-cards bg-light-cards text-black dark:text-white my-4 transition-transform transform-gpu hover:scale-110"
+    class="flex flex-col tablet:flex-row work-card p-6 rounded-lg shadow-md items-start tablet:w-140 w-96 dark:bg-cards bg-light-cards text-black dark:text-white my-4 transition-transform transform-gpu hover:scale-110"
   >
-    <div class="flex mb-4 w-36 font-bold text-xxxs">
+    <div class="mb-4 w-36 font-bold text-xxxs">
       <p>{{ experience.startDate }} — {{ experience.endDate }}</p>
     </div>
-    <div class="w-96">
+    <div class="w-80 tablet:w-96">
       <div class="text-xl font-bold mb-2">{{ experience.company }}</div>
       <div class="mb-4">
         <div class="font-semibold text-secondaryPurple">
@@ -37,12 +37,12 @@
 <div class="flex justify-center items-center flex-col">
   <div
     *ngFor="let education of educations"
-    class="work-card p-6 rounded-lg shadow-md flex items-start w-140 dark:bg-cards bg-light-cards text-black dark:text-white my-4 transition-transform transform-gpu hover:scale-110"
+    class="work-card p-6 rounded-lg shadow-md flex flex-col tablet:flex-row items-start tablet:w-140 w-96 dark:bg-cards bg-light-cards text-black dark:text-white my-4 transition-transform transform-gpu hover:scale-110"
   >
     <div class="flex mb-4 w-36 font-bold text-xxxs">
       <p>{{ education.startDate }} — {{ education.endDate }}</p>
     </div>
-    <div class="w-96">
+    <div class="w-80 tablet:w-96">
       <div class="font-bold mb-2">{{ education.institution }}</div>
       <div class="mb-4">
         <div class="font-semibold text-secondaryPurple">
