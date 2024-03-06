@@ -41,7 +41,7 @@ export class WorkComponent implements OnInit {
         Languages.Angular,
         Languages.ThreeJS,
         Languages.TailwindCSS,
-        Languages.TypeScript,
+        // Languages.TypeScript,
       ],
       'https://github.com/ZIRTR0X/PersonalWebsite',
       'https://julien-theme.dev/'

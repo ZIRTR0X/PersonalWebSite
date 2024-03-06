@@ -37,4 +37,5 @@ export enum Languages {
   Laravel = 'Laravel',
   PHP = 'PHP',
   AFrame = 'A-Frame',
+  SCRUM = 'SCRUM',
 }

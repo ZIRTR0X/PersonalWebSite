@@ -19,12 +19,13 @@ export class AboutComponent {
         Languages.RxJS,
         Languages.Cypress,
         Languages.CouchDB,
+        Languages.SCRUM,
       ],
       'Sep 2023',
       'Dec 2023',
       'Calaosoft',
       'Mobile Developer',
-      'Deliver high-quality, robust production code for a diverse array of projects for clients including Harvard Business School, Everytown for Gun Safety, Pratt Institute, Koala Health, Vanderbilt University, The 19th News, and more. Provide leadership within engineering department through close collaboration, knowledge shares, and mentorship.'
+      'Development of crossplatform, offlinefirst and mobilefirst applications using SCRUM agile methodology.'
     ),
     new Experience(
       [
@@ -34,12 +35,13 @@ export class AboutComponent {
         Languages.RxJS,
         Languages.Cypress,
         Languages.CouchDB,
+        Languages.SCRUM,
       ],
       'Sep 2022',
       'Aug 2023',
       'Calaosoft',
       'Mobile Developer in apprenticeship',
-      'Deliver high-quality, robust production code for a diverse array of projects for clients including Harvard Business School, Everytown for Gun Safety, Pratt Institute, Koala Health, Vanderbilt University, The 19th News, and more. Provide leadership within engineering department through close collaboration, knowledge shares, and mentorship.'
+      'Development of crossplatform, offlinefirst and mobilefirst applications using SCRUM agile methodology.'
     ),
     new Experience(
       [
@@ -52,7 +54,7 @@ export class AboutComponent {
       'Jun 2022',
       'AFA-MULTIMEDIA',
       'Internship in Web Developmen',
-      ''
+      "Development of web applications using A-FRAME, a framework based on Three.js. The apps can be used ''normally'', but also with VR headsets."
     ),
   ];
 
@@ -60,21 +62,21 @@ export class AboutComponent {
     new Education(
       'Sep 2022',
       'Aug 2023',
-      'Clermont Auvergne University (UCA), France',
+      'Clermont Auvergne University (UCA)',
       'Third year of a computer science degree specializing in mobile application',
       ''
     ),
     new Education(
       'Sep 2020',
       'Jun 2022',
-      'Clermont Auvergne University (UCA), France',
+      'Clermont Auvergne University (UCA)',
       'University Technology Diploma in Computer Science',
       ''
     ),
     new Education(
       'Sep 2018',
       'Jul 2020',
-      'Lycée Saint-Joseph, Marvejols',
+      'Saint-Joseph High School, Marvejols',
       'Scientific Baccalaureate, specializing in Mathematics',
       ''
     ),
