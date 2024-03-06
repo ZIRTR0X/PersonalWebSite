@@ -16,7 +16,6 @@ import { ContactModule } from './contact/contact.module';
 import { NavbarComponent } from './navbar/navbar.component';
 import { MobileNavbarComponent } from './mobile-navbar/mobile-navbar.component';
 import { DarkModeToggleButtonModule } from './dark-mode-toggle-button/dark-mode-toggle-button.module';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { AboutModule } from './about/about.module';
 
 @NgModule({
@@ -35,7 +34,6 @@ import { AboutModule } from './about/about.module';
     HomeModule,
     ContactModule,
     DarkModeToggleButtonModule,
-    MatSlideToggleModule,
     AboutModule,
   ],
   providers: [],
