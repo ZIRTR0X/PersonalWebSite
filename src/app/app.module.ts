@@ -1,35 +1,44 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {RouterLink, RouterModule} from '@angular/router';
+import { RouterLink, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { HomeComponent } from './home/home.component';
-import {WorkComponent} from "./work/work.component";
-import {ContactComponent} from "./contact/contact.component";
-import {EarthComponent} from "./earth/earth.component";
-import {AngularSvgIconModule} from "angular-svg-icon";
-import {HttpClientModule} from "@angular/common/http";
-import { NgxGoogleAnalyticsModule, NgxGoogleAnalyticsRouterModule} from 'ngx-google-analytics';
+import { HttpClientModule } from '@angular/common/http';
+import {
+  NgxGoogleAnalyticsModule,
+  NgxGoogleAnalyticsRouterModule,
+} from 'ngx-google-analytics';
+import { FooterModule } from './footer/footer.module';
+import { WorkModule } from './work/work.module';
+import { AngularSvgIconModule } from 'angular-svg-icon';
+import { HomeModule } from './home/home.module';
+import { ContactModule } from './contact/contact.module';
+import { NavbarComponent } from './navbar/navbar.component';
+import { MobileNavbarComponent } from './mobile-navbar/mobile-navbar.component';
+import { DarkModeToggleButtonModule } from './dark-mode-toggle-button/dark-mode-toggle-button.module';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { AboutModule } from './about/about.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    WorkComponent,
-    ContactComponent,
-    EarthComponent
-  ],
+  declarations: [AppComponent, NavbarComponent, MobileNavbarComponent],
   imports: [
     BrowserModule,
     RouterModule,
     AppRoutingModule,
     RouterLink,
-    AngularSvgIconModule.forRoot(),
     HttpClientModule,
     NgxGoogleAnalyticsModule.forRoot('G-XCFJ5ZRZMV'),
-    NgxGoogleAnalyticsRouterModule
+    NgxGoogleAnalyticsRouterModule,
+    FooterModule,
+    WorkModule,
+    AngularSvgIconModule.forRoot(),
+    HomeModule,
+    ContactModule,
+    DarkModeToggleButtonModule,
+    MatSlideToggleModule,
+    AboutModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

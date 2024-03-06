@@ -32,4 +32,10 @@ export enum Languages {
   Expo = 'Expo',
   Quarkus = 'Quarkus',
   MangoDB = 'MangoDB',
+  RxJS = 'RxJS',
+  Cypress = 'Cypress',
+  Laravel = 'Laravel',
+  PHP = 'PHP',
+  AFrame = 'A-Frame',
+  SCRUM = 'SCRUM',
 }

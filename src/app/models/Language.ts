@@ -1,4 +1,4 @@
-import {LanguagesLevel} from "../enums/LanguageLevel";
+import { LanguagesLevel } from '../enums/ELanguageLevel';
 
 export class Language {
   private _id: number;
@@ -7,7 +7,13 @@ export class Language {
   private _description: string;
   private _level: LanguagesLevel;
 
-  constructor(id: number, name: string, icon: string, description: string, level: LanguagesLevel) {
+  constructor(
+    id: number,
+    name: string,
+    icon: string,
+    description: string,
+    level: LanguagesLevel
+  ) {
     this._id = id;
     this._name = name;
     this._icon = icon;
