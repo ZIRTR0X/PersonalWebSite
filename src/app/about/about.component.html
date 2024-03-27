@@ -2,7 +2,7 @@
 <div class="flex justify-center items-center flex-col">
   <div
     *ngFor="let experience of experiences"
-    class="flex flex-col tablet:flex-row work-card p-6 rounded-lg shadow-md items-start tablet:w-140 w-96 dark:bg-cards bg-light-cards text-black dark:text-white my-4 transition-transform transform-gpu hover:scale-110"
+    class="flex flex-col tablet:flex-row work-card p-6 rounded-lg shadow-md items-start tablet:w-140 w-124 dark:bg-cards bg-light-cards text-black dark:text-white my-4 transition-transform transform-gpu hover:scale-110"
   >
     <div class="mb-4 w-36 font-bold text-xxxs">
       <p>{{ experience.startDate }} — {{ experience.endDate }}</p>
@@ -37,7 +37,7 @@
 <div class="flex justify-center items-center flex-col">
   <div
     *ngFor="let education of educations"
-    class="work-card p-6 rounded-lg shadow-md flex flex-col tablet:flex-row items-start tablet:w-140 w-96 dark:bg-cards bg-light-cards text-black dark:text-white my-4 transition-transform transform-gpu hover:scale-110"
+    class="work-card p-6 rounded-lg shadow-md flex flex-col tablet:flex-row items-start tablet:w-140 w-124 dark:bg-cards bg-light-cards text-black dark:text-white my-4 transition-transform transform-gpu hover:scale-110"
   >
     <div class="flex mb-4 w-36 font-bold text-xxxs">
       <p>{{ education.startDate }} — {{ education.endDate }}</p>
